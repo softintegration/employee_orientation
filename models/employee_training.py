@@ -28,7 +28,7 @@ from odoo import api, fields, models, _
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    certificates = fields.Boolean(default=True, string="Certificates")
+    certificates = fields.Boolean(default=True, string="Certificates",groups="hr.group_hr_user")
 
 
 class EmployeeTraining(models.Model):
