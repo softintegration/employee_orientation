@@ -21,8 +21,16 @@
 #############################################################################
 
 from dateutil.relativedelta import relativedelta
-from datetime import datetime, timedelta
 from odoo import api, fields, models, _
+from datetime import datetime, timedelta
+from pytz import timezone
+
+from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT
+NEW_DATE_FORMAT = "%d/%m/%Y"
+NEW_TIME_FORMAT = "%H:%M:%S"
+NEW_DATETIME_FORMAT = "%s %s" % (
+    NEW_DATE_FORMAT,
+    NEW_TIME_FORMAT)
 
 
 class HrEmployee(models.Model):
@@ -44,6 +52,7 @@ class EmployeeTraining(models.Model):
     note_id = fields.Text('Description')
     date_from = fields.Datetime(string="Date From")
     date_to = fields.Datetime(string="Date To")
+    period_str = fields.Char(string="Time Period",compute='_compute_period_str')
     user_id = fields.Many2one('res.users', string='users', default=lambda self: self.env.user)
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.user.company_id)
@@ -55,6 +64,18 @@ class EmployeeTraining(models.Model):
         ('complete', 'Completed'),
         ('print', 'Print'),
     ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
+
+
+    @api.depends('date_from','date_to')
+    def _compute_period_str(self):
+        for each in self:
+            if each.date_from and each.date_to:
+                date_from_tz = each.date_from.astimezone(timezone(each.env.context.get('tz')))
+                date_to_tz = each.date_to.astimezone(timezone(each.env.context.get('tz')))
+                date_from_str = datetime.strptime(date_from_tz.strftime(DEFAULT_SERVER_DATETIME_FORMAT), DEFAULT_SERVER_DATETIME_FORMAT).strftime(NEW_DATETIME_FORMAT)
+                date_to_str = datetime.strptime(date_to_tz.strftime(DEFAULT_SERVER_DATETIME_FORMAT), DEFAULT_SERVER_DATETIME_FORMAT).strftime(NEW_DATETIME_FORMAT)
+                each.period_str = _('%s to %s')%(date_from_str,date_to_str)
+
 
     @api.depends('program_department_id')
     def employee_details(self):

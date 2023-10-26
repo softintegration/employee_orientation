@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0-20220915\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-10 12:11+0000\n"
-"PO-Revision-Date: 2023-09-10 12:11+0000\n"
+"POT-Creation-Date: 2023-10-26 14:25+0000\n"
+"PO-Revision-Date: 2023-10-26 14:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
 msgid "\" conducted by"
 msgstr "Conduit par"
+
+#. module: employee_orientation
+#: code:addons/employee_orientation/models/employee_training.py:0
+#, python-format
+msgid "%s to %s"
+msgstr "%s à %s"
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
@@ -314,7 +320,7 @@ msgstr "Créé le"
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__request_date
 msgid "Date"
-msgstr "Date"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__date_from
@@ -338,7 +344,7 @@ msgstr "Département"
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__note_id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__note
 msgid "Description"
-msgstr "Description"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__display_name
@@ -353,7 +359,7 @@ msgstr "Nom affiché"
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_request_form
 msgid "Documents"
-msgstr "Documents"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields.selection,name:employee_orientation.selection__employee_orientation__state__draft
@@ -486,13 +492,9 @@ msgstr "Si coché, les nouveaux messages nécessitent votre attention."
 
 #. module: employee_orientation
 #: model:ir.model.fields,help:employee_orientation.field_employee_orientation__message_has_error
-#: model:ir.model.fields,help:employee_orientation.field_employee_orientation__message_has_sms_error
 #: model:ir.model.fields,help:employee_orientation.field_employee_training__message_has_error
-#: model:ir.model.fields,help:employee_orientation.field_employee_training__message_has_sms_error
 #: model:ir.model.fields,help:employee_orientation.field_orientation_checklist__message_has_error
-#: model:ir.model.fields,help:employee_orientation.field_orientation_checklist__message_has_sms_error
 #: model:ir.model.fields,help:employee_orientation.field_orientation_request__message_has_error
-#: model:ir.model.fields,help:employee_orientation.field_orientation_request__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si coché, certains messages ont une erreur de livraison."
 
@@ -550,7 +552,7 @@ msgstr ""
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__parent_id
 msgid "Manager"
-msgstr "Manager"
+msgstr ""
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_orientation_form
@@ -571,7 +573,7 @@ msgstr "Erreur d'envoi du message"
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__message_ids
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__message_ids
 msgid "Messages"
-msgstr "Messages"
+msgstr ""
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
@@ -599,7 +601,7 @@ msgstr "Nouveau"
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_training_form
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_request_form
 msgid "Notes"
-msgstr "Notes"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__message_needaction_counter
@@ -644,7 +646,7 @@ msgstr "Nombre de messages non lus"
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__orientation_id
 msgid "Orientation"
-msgstr "Orientation"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.actions.act_window,name:employee_orientation.action_orientation_checklist
@@ -694,7 +696,7 @@ msgstr "Demande d'orientation"
 #. module: employee_orientation
 #: model:ir.ui.menu,name:employee_orientation.menu_employee_orientation
 msgid "Orientations"
-msgstr "Orientations"
+msgstr ""
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_force_complete_form
@@ -704,7 +706,8 @@ msgstr "Lignes en attente"
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_force_complete_form
 msgid "Please make sure that orientations programs are already done."
-msgstr "Veuillez vous assurer que les programmes d'orientation sont déjà effectués."
+msgstr ""
+"Veuillez vous assurer que les programmes d'orientation sont déjà effectués."
 
 #. module: employee_orientation
 #: model:ir.model.fields.selection,name:employee_orientation.selection__employee_training__state__print
@@ -725,14 +728,6 @@ msgid "Responsible User"
 msgstr "Utilisateur responsable"
 
 #. module: employee_orientation
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__message_has_sms_error
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__message_has_sms_error
-#: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__message_has_sms_error
-#: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Erreur d'envoi de l'SMS"
-
-#. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_training_form
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_request_form
 msgid "Send by Email"
@@ -742,14 +737,16 @@ msgstr "Envoyer par email"
 #: model:ir.model.fields,help:employee_orientation.field_orientation_checklist__active
 msgid ""
 "Set active to false to hide the Orientation Checklist without removing it."
-msgstr "Définissez active sur FAUX pour masquer la liste de contrôle d'orientation sans la supprimer."
+msgstr ""
+"Définissez active sur FAUX pour masquer la liste de contrôle d'orientation "
+"sans la supprimer."
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__state
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__state
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__state
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
@@ -757,6 +754,7 @@ msgid "This certificate is awarded to"
 msgstr "Ce certificat est attribué à"
 
 #. module: employee_orientation
+#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__period_str
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_training_form
 msgid "Time Period"
 msgstr "Période"
@@ -782,22 +780,6 @@ msgstr "Messages non lus"
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__message_unread_counter
 msgid "Unread Messages Counter"
 msgstr "Nombre de messages non lus"
-
-#. module: employee_orientation
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__website_message_ids
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__website_message_ids
-#: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__website_message_ids
-#: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__website_message_ids
-msgid "Website Messages"
-msgstr "Messages du site web"
-
-#. module: employee_orientation
-#: model:ir.model.fields,help:employee_orientation.field_employee_orientation__website_message_ids
-#: model:ir.model.fields,help:employee_orientation.field_employee_training__website_message_ids
-#: model:ir.model.fields,help:employee_orientation.field_orientation_checklist__website_message_ids
-#: model:ir.model.fields,help:employee_orientation.field_orientation_request__website_message_ids
-msgid "Website communication history"
-msgstr "Historique des communications du site Web"
 
 #. module: employee_orientation
 #: model:ir.model,name:employee_orientation.model_checklist_line
