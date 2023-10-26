@@ -22,6 +22,7 @@
 
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models, _
+from odoo.exceptions import ValidationError
 from datetime import datetime, timedelta
 from pytz import timezone
 
@@ -76,6 +77,11 @@ class EmployeeTraining(models.Model):
                 date_to_str = datetime.strptime(date_to_tz.strftime(DEFAULT_SERVER_DATETIME_FORMAT), DEFAULT_SERVER_DATETIME_FORMAT).strftime(NEW_DATETIME_FORMAT)
                 each.period_str = _('%s to %s')%(date_from_str,date_to_str)
 
+    @api.constrains('date_from', 'date_to')
+    def _check_dates(self):
+        for each in self:
+            if each.date_from and each.date_to and each.date_from > each.date_to:
+                raise ValidationError(_('Invalid period specified: start date must be earlier than end date.'))
 
     @api.depends('program_department_id')
     def employee_details(self):

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-26 14:25+0000\n"
-"PO-Revision-Date: 2023-10-26 14:25+0000\n"
+"POT-Creation-Date: 2023-10-26 14:43+0000\n"
+"PO-Revision-Date: 2023-10-26 14:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -497,6 +497,12 @@ msgstr "Si coché, les nouveaux messages nécessitent votre attention."
 #: model:ir.model.fields,help:employee_orientation.field_orientation_request__message_has_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Si coché, certains messages ont une erreur de livraison."
+
+#. module: employee_orientation
+#: code:addons/employee_orientation/models/employee_training.py:0
+#, python-format
+msgid "Invalid period specified: start date must be earlier than end date."
+msgstr "Période spécifiée non valide : la date de début doit être antérieure à la date de fin."
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__message_is_follower
