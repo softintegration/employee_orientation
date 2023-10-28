@@ -54,6 +54,7 @@ class EmployeeTraining(models.Model):
     date_from = fields.Datetime(string="Date From")
     date_to = fields.Datetime(string="Date To")
     period_str = fields.Char(string="Time Period",compute='_compute_period_str')
+    duration = fields.Float('Duration (H)',required=True)
     user_id = fields.Many2one('res.users', string='users', default=lambda self: self.env.user)
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.user.company_id)
@@ -66,6 +67,15 @@ class EmployeeTraining(models.Model):
         ('complete', 'Completed'),
         ('print', 'Print'),
     ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
+
+
+    @api.constrains('duration')
+    def _check_duration(self):
+        for each in self:
+            if each.duration <= 0:
+                raise ValidationError(_("The duration must be strictly positive!"))
+
+
 
 
     @api.depends('date_from','date_to')

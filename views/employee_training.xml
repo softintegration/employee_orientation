@@ -10,6 +10,7 @@
                     <field name="program_department_id"/>
                     <field name="program_convener_id" domain="[('department_id.name', '=', 'program_department.name')]"/>
                     <field name="period_str"/>
+                    <field name="duration" widget="float_time" sum="Total duration"/>
                     <field name="external" widget="boolean"/>
                     <field name="state"/>
                 </tree>
@@ -35,6 +36,7 @@
                                 <field name="program_name" />
                                 <label for="date_from" string="Time Period"/>
                                 <div><field name="date_from" class="oe_inline"/> to <field name="date_to" class="oe_inline"/></div>
+                                <field name="duration" widget="float_time"/>
                             </group>
                             <group>
                                 <field name="program_department_id"/>
