@@ -59,7 +59,7 @@ class EmployeeTraining(models.Model):
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.user.company_id)
     external = fields.Boolean(string='External')
-    external_agency = fields.Many2one('employee.training.agency',string='External agency')
+    external_agency = fields.Many2one('res.partner',string='External agency')
 
     state = fields.Selection([
         ('new', 'New'),
@@ -166,8 +166,3 @@ class EmployeeTraining(models.Model):
             'context': ctx,
         }
 
-class EmployeeTrainingAgency(models.Model):
-    _name = 'employee.training.agency'
-
-    name = fields.Char(string='Name',required=True)
-    description = fields.Char(string='Description')

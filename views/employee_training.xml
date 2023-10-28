@@ -37,12 +37,15 @@
                                 <label for="date_from" string="Time Period"/>
                                 <div><field name="date_from" class="oe_inline"/> to <field name="date_to" class="oe_inline"/></div>
                                 <field name="duration" widget="float_time"/>
+                                <field name="company_id" groups="base.group_multi_company"/>
                             </group>
                             <group>
                                 <field name="program_department_id"/>
                                 <field name="program_convener_id"/>
                                 <field name="external" widget="boolean_toggle"/>
-                                <field name="external_agency" attrs="{'invisible':[('external','=',False)],'required':[('external','=',True)]}"/>
+                                <field name="external_agency" domain="[('is_company','=',True),('id','!=',company_id)]"
+                                       context="{'default_is_company':True}"
+                                       attrs="{'invisible':[('external','=',False)],'required':[('external','=',True)]}"/>
                             </group>
                         </group>
                         <notebook colspan="4">
@@ -80,34 +83,6 @@
             </field>
         </record>
 
-        <!-- External agency Form view -->
-
-    <record model="ir.ui.view" id="employee_training_agency_form_view">
-        <field name="name">employee.training.agency.form.view</field>
-        <field name="model">employee.training.agency</field>
-        <field name="arch" type="xml">
-            <form>
-                <sheet>
-                    <group>
-                        <field name="name"/>
-                        <field name="description"/>
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-    <!-- External agency Tree view -->
-    <record model="ir.ui.view" id="employee_training_agency_tree_view">
-        <field name="name">employee.training.agency.tree.view</field>
-        <field name="model">employee.training.agency</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="description"/>
-            </tree>
-        </field>
-    </record>
 
 
 
