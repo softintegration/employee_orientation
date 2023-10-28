@@ -14,6 +14,7 @@
                     <!--<field name="period_str"/>-->
                     <field name="duration" widget="float_time" sum="Total duration"/>
                     <field name="external" widget="boolean"/>
+                    <field name="external_agency"/>
                     <field name="state"/>
                 </tree>
             </field>
@@ -104,12 +105,21 @@
              </field>
         </record>
         <menuitem
-            id="menu_employee_training_child"
-            name="Training Program"
+            id="menu_employee_training"
+            name="Training"
             parent="hr.menu_hr_root"
-            action="action_employee_training"
             sequence="91"
             />
+
+        <menuitem
+            id="menu_employee_training_child"
+            name="Training program"
+            parent="employee_orientation.menu_employee_training"
+            action="action_employee_training"
+            sequence="50"
+            />
+
+
        <record id="hr_employee_view_for" model="ir.ui.view">
             <field name="name">hr.employee.inherit.form</field>
             <field name="model">hr.employee</field>

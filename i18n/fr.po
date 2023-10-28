@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-28 11:40+0000\n"
-"PO-Revision-Date: 2023-10-28 11:40+0000\n"
+"POT-Creation-Date: 2023-10-28 20:54+0000\n"
+"PO-Revision-Date: 2023-10-28 20:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -300,7 +300,6 @@ msgstr "Créer une demande d'orientation"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__create_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__create_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__create_uid
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__create_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__create_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__create_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__create_uid
@@ -311,7 +310,6 @@ msgstr "Créé par"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__create_date
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__create_date
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__create_date
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__create_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__create_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__create_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__create_date
@@ -344,7 +342,6 @@ msgstr "Département"
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__note
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__note_id
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__description
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__note
 msgid "Description"
 msgstr ""
@@ -353,7 +350,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__display_name
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__display_name
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__display_name
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__display_name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__display_name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__display_name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__display_name
@@ -491,7 +487,6 @@ msgstr "Heures"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__id
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__id
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__id
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__id
@@ -543,7 +538,6 @@ msgstr "Poste occupé"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line____last_update
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation____last_update
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training____last_update
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency____last_update
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist____last_update
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete____last_update
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request____last_update
@@ -554,7 +548,6 @@ msgstr "Dernière modification le"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__write_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__write_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__write_uid
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__write_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__write_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__write_uid
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__write_uid
@@ -565,7 +558,6 @@ msgstr "Dernière mise à jour par"
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__write_date
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__write_date
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__write_date
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__write_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__write_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__write_date
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__write_date
@@ -613,7 +605,6 @@ msgstr "Minutes, à"
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_checklist_line__line_name
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training_agency__name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__checklist_name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_force_complete__name
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__request_name
@@ -803,9 +794,18 @@ msgid "Total duration"
 msgstr ""
 
 #. module: employee_orientation
+#: model:ir.ui.menu,name:employee_orientation.menu_employee_training
+msgid "Training"
+msgstr "Formation"
+
+#. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__program_name
-#: model:ir.ui.menu,name:employee_orientation.menu_employee_training_child
 msgid "Training Program"
+msgstr "Programme de formation"
+
+#. module: employee_orientation
+#: model:ir.ui.menu,name:employee_orientation.menu_employee_training_child
+msgid "Training program"
 msgstr "Programme de formation"
 
 #. module: employee_orientation
@@ -833,11 +833,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
 msgid "days,"
 msgstr "jours,"
-
-#. module: employee_orientation
-#: model:ir.model,name:employee_orientation.model_employee_training_agency
-msgid "employee.training.agency"
-msgstr ""
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.print_pack_template
