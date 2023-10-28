@@ -57,6 +57,7 @@ class EmployeeTraining(models.Model):
     user_id = fields.Many2one('res.users', string='users', default=lambda self: self.env.user)
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.user.company_id)
+    external = fields.Boolean(string='External')
 
     state = fields.Selection([
         ('new', 'New'),
