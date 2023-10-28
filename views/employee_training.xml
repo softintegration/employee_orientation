@@ -42,6 +42,7 @@
                                 <field name="program_department_id"/>
                                 <field name="program_convener_id"/>
                                 <field name="external" widget="boolean_toggle"/>
+                                <field name="external_agency" attrs="{'invisible':[('external','=',False)],'required':[('external','=',True)]}"/>
                             </group>
                         </group>
                         <notebook colspan="4">
@@ -78,6 +79,39 @@
                 </search>
             </field>
         </record>
+
+        <!-- External agency Form view -->
+
+    <record model="ir.ui.view" id="employee_training_agency_form_view">
+        <field name="name">employee.training.agency.form.view</field>
+        <field name="model">employee.training.agency</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- External agency Tree view -->
+    <record model="ir.ui.view" id="employee_training_agency_tree_view">
+        <field name="name">employee.training.agency.tree.view</field>
+        <field name="model">employee.training.agency</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+
         <record model="ir.actions.act_window" id="action_employee_training">
             <field name="name">Employee Training Program</field>
             <field name="type">ir.actions.act_window</field>

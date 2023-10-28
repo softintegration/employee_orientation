@@ -59,6 +59,7 @@ class EmployeeTraining(models.Model):
     company_id = fields.Many2one('res.company', string='Company', required=True,
                                  default=lambda self: self.env.user.company_id)
     external = fields.Boolean(string='External')
+    external_agency = fields.Many2one('employee.training.agency',string='External agency')
 
     state = fields.Selection([
         ('new', 'New'),
@@ -98,6 +99,10 @@ class EmployeeTraining(models.Model):
     def employee_details(self):
         datas = self.env['hr.employee'].search([('department_id', '=', self.program_department_id.id)])
         self.training_ids = datas
+
+    @api.onchange('external')
+    def onchange_external(self):
+        self.external_agency = False
 
     def print_event(self):
         self.ensure_one()
@@ -160,3 +165,9 @@ class EmployeeTraining(models.Model):
             'target': 'new',
             'context': ctx,
         }
+
+class EmployeeTrainingAgency(models.Model):
+    _name = 'employee.training.agency'
+
+    name = fields.Char(string='Name',required=True)
+    description = fields.Char(string='Description')
