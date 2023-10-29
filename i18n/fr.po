@@ -204,7 +204,7 @@ msgstr "Certificat de participation"
 
 #. module: employee_orientation
 #: model:ir.actions.report,name:employee_orientation.print_pack_certificates
-#: model:ir.model.fields,field_description:employee_orientation.field_hr_employee__certificates
+#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__certificates
 msgid "Certificates"
 msgstr "Certificats"
 

@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <tree string="Employee Training Program">
                     <field name="program_name"/>
-                    <field name="program_department_id"/>
+                    <field name="program_department_ids" widget="many2many_tags" optional="hide"/>
                     <field name="program_convener_id" domain="[('department_id.name', '=', 'program_department.name')]"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
@@ -40,10 +40,11 @@
                                 <label for="date_from" string="Time Period"/>
                                 <div><field name="date_from" class="oe_inline"/> to <field name="date_to" class="oe_inline"/></div>
                                 <field name="duration" widget="float_time"/>
+                                <field name="certificates"/>
                                 <field name="company_id" groups="base.group_multi_company"/>
                             </group>
                             <group>
-                                <field name="program_department_id"/>
+                                <field name="program_department_ids" widget="many2many_tags"/>
                                 <field name="program_convener_id"/>
                                 <field name="external" widget="boolean_toggle"/>
                                 <field name="external_agency" domain="[('is_company','=',True),('id','!=',company_id)]"
@@ -55,10 +56,11 @@
                             <page name="checklist_lines" string="Employee Details">
                                 <field name="training_ids">
                                     <tree editable="true">
-                                        <field name="name"/>
-                                        <field name="job_id"/>
-                                        <field name="parent_id"/>
-                                        <field name="certificates" />
+                                        <field name="name" readonly="1"/>
+                                        <field name="job_id" readonly="1"/>
+                                        <field name="parent_id" readonly="1"/>
+                                        <field name="department_id" readonly="1"/>
+                                        <field name="company_id" invisible="1"/>
                                     </tree>
                                 </field>
                             </page>
@@ -119,17 +121,5 @@
             sequence="50"
             />
 
-
-       <record id="hr_employee_view_for" model="ir.ui.view">
-            <field name="name">hr.employee.inherit.form</field>
-            <field name="model">hr.employee</field>
-            <field name="inherit_id" ref="hr.view_employee_form" />
-            <field name="priority">30</field>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='parent_id']" position="after">
-                    <field name="certificates" editable="true" />
-                </xpath>
-            </field>
-        </record>
     </data>
 </odoo>

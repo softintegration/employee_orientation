@@ -21,7 +21,7 @@
 
 {
     'name': "Employee Orientation & Training",
-    'version': '15.0.1.0.10',
+    'version': '15.0.1.0.11',
     'category': "Generic Modules/Human Resources",
     'summary': """Employee Orientation/Training Program""",
     'description': 'Complete Employee Orientation/Training Program',
@@ -39,6 +39,7 @@
         'views/print_pack_certificates_template.xml',
         'views/report.xml',
         'views/employee_training.xml',
+        'views/hr_employee_views.xml',
         'wizard/orientation_complete.xml',
         'security/ir.model.access.csv',
     ],

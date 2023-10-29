@@ -85,7 +85,7 @@
                         You are requested to conduct
                         <t t-out="object.program_name"/>
                         Training program for
-                        <t t-out="object.program_department_id.name"/>
+                        <t t-out="object.program_department_ids[0].name"/>
                         department
                         <t t-if=" object.date_from and object.date_to">
                             from

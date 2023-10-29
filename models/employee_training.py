@@ -37,7 +37,39 @@ NEW_DATETIME_FORMAT = "%s %s" % (
 class HrEmployee(models.Model):
     _inherit = 'hr.employee'
 
-    certificates = fields.Boolean(default=True, string="Certificates",groups="hr.group_hr_user")
+    training_ids = fields.One2many('hr.employee', string='Training Details', compute="_compute_training_details")
+    training_ids_count = fields.Integer(compute='_compute_training_ids_count')
+
+
+    def _compute_training_details(self):
+        for each in self:
+            domain = [('training_ids','=',each.id)]
+            trainings = self.env['employee.training'].search(domain)
+            each.training_ids = trainings.ids
+
+
+    @api.depends('training_ids')
+    def _compute_training_ids_count(self):
+        for each in self:
+            each.training_ids_count = len(each.training_ids)
+
+
+    def show_training_ids(self):
+        self.ensure_one()
+        domain = [('id', 'in', self.training_ids.ids)]
+        return {
+            'name': _('Training planning'),
+            'view_mode': 'tree,form',
+            'views': [(self.env.ref('employee_orientation.view_employee_training_tree').id, 'tree'),
+                      (self.env.ref('employee_orientation.view_employee_training_form').id, 'form')],
+            'res_model': 'employee.training',
+            'type': 'ir.actions.act_window',
+            'target': 'current',
+            'domain': domain,
+        }
+
+
+
 
 
 class EmployeeTraining(models.Model):
@@ -47,9 +79,10 @@ class EmployeeTraining(models.Model):
     _inherit = 'mail.thread'
 
     program_name = fields.Char(string='Training Program', required=True)
-    program_department_id = fields.Many2one('hr.department', string='Department', required=True)
+    program_department_ids = fields.Many2many('hr.department', string='Departments', required=False)
     program_convener_id = fields.Many2one('res.users', string='Responsible User', size=32, required=True)
-    training_ids = fields.One2many('hr.employee', string='Employee Details', compute="employee_details")
+    training_ids = fields.Many2many('hr.employee','employee_training_employee','training_id','employee_id',string='Employee Details',
+                                    readonly=False)
     note_id = fields.Text('Description')
     date_from = fields.Datetime(string="Date From")
     date_to = fields.Datetime(string="Date To")
@@ -68,7 +101,7 @@ class EmployeeTraining(models.Model):
         ('complete', 'Completed'),
         ('print', 'Print'),
     ], string='Status', readonly=True, copy=False, index=True, track_visibility='onchange', default='new')
-
+    certificates = fields.Boolean(default=True, string="Certificates")
 
     @api.constrains('duration')
     def _check_duration(self):
@@ -95,9 +128,9 @@ class EmployeeTraining(models.Model):
             if each.date_from and each.date_to and each.date_from > each.date_to:
                 raise ValidationError(_('Invalid period specified: start date must be earlier than end date.'))
 
-    @api.depends('program_department_id')
-    def employee_details(self):
-        datas = self.env['hr.employee'].search([('department_id', '=', self.program_department_id.id)])
+    @api.onchange('program_department_ids')
+    def onchange_department_ids(self):
+        datas = self.env['hr.employee'].search([('department_id', 'in', self.program_department_ids.ids)])
         self.training_ids = datas
 
     @api.onchange('external')
@@ -113,7 +146,7 @@ class EmployeeTraining(models.Model):
         hours = difference.hours
         minutes = difference.minutes
         data = {
-            'dept_id': self.program_department_id.id,
+            'dept_id': self.program_department_ids[0].id,
             'program_name': self.program_name,
             'company_name': self.company_id.name,
             'date_to': started_date,
