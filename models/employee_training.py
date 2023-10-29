@@ -45,13 +45,13 @@ class HrEmployee(models.Model):
         for each in self:
             domain = [('training_ids','=',each.id)]
             trainings = self.env['employee.training'].search(domain)
-            each.training_ids = trainings.ids
+            each.training_ids = trainings.ids or False
 
 
     @api.depends('training_ids')
     def _compute_training_ids_count(self):
         for each in self:
-            each.training_ids_count = len(each.training_ids)
+            each.training_ids_count = len(each.training_ids and each.training_ids or [])
 
 
     def show_training_ids(self):

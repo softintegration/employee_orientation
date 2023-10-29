@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 20:31+0000\n"
-"PO-Revision-Date: 2023-10-29 20:31+0000\n"
+"POT-Creation-Date: 2023-10-29 20:51+0000\n"
+"PO-Revision-Date: 2023-10-29 20:51+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -159,11 +159,14 @@ msgid ""
 "                                planning\n"
 "                            </span>"
 msgstr ""
+"<span class=\"o_stat_text\">\n"
+"                                de formation\n"
+"                            </span>"
 
 #. module: employee_orientation
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_form_inherited
 msgid "<span>Training</span>"
-msgstr ""
+msgstr "<span>Planning </span>"
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__message_needaction
