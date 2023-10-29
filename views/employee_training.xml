@@ -83,7 +83,11 @@
             <field name="arch" type="xml">
                 <search string="Employee Training Program">
                     <field name="program_name"/>
-                    <newline/>
+                    <field name="training_ids" string="Employee"/>
+                    <separator/>
+                    <group expand="0" string="Group By">
+                        <filter name="group_by_employee" string="Employee" context="{'group_by':'training_ids'}"/>
+                    </group>
                 </search>
             </field>
         </record>

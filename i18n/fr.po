@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-28 20:54+0000\n"
-"PO-Revision-Date: 2023-10-28 20:54+0000\n"
+"POT-Creation-Date: 2023-10-29 20:31+0000\n"
+"PO-Revision-Date: 2023-10-29 20:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgid ""
 "                        You are requested to conduct\n"
 "                        <t t-out=\"object.program_name\"/>\n"
 "                        Training program for\n"
-"                        <t t-out=\"object.program_department_id.name\"/>\n"
+"                        <t t-out=\"object.program_department_ids[0].name\"/>\n"
 "                        department\n"
 "                        <t t-if=\" object.date_from and object.date_to\">\n"
 "                            from\n"
@@ -150,6 +150,19 @@ msgid ""
 "                    </div>\n"
 "                </div>\n"
 "            "
+msgstr ""
+
+#. module: employee_orientation
+#: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_form_inherited
+msgid ""
+"<span class=\"o_stat_text\">\n"
+"                                planning\n"
+"                            </span>"
+msgstr ""
+
+#. module: employee_orientation
+#: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_form_inherited
+msgid "<span>Training</span>"
 msgstr ""
 
 #. module: employee_orientation
@@ -334,10 +347,14 @@ msgstr "Date à"
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__department_id
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__program_department_id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_checklist__checklist_department_id
 msgid "Department"
 msgstr "Département"
+
+#. module: employee_orientation
+#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__program_department_ids
+msgid "Departments"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__note
@@ -375,6 +392,7 @@ msgstr "Durée (H)"
 #: model:ir.model,name:employee_orientation.model_hr_employee
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__employee_id
 #: model:ir.model.fields,field_description:employee_orientation.field_orientation_request__employee_id
+#: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_training_search
 msgid "Employee"
 msgstr "Employé"
 
@@ -469,6 +487,11 @@ msgstr "Abonnées (partenaires)"
 #: model_terms:ir.ui.view,arch_db:employee_orientation.view_orientation_force_complete_form
 msgid "Force Complete"
 msgstr "Forcer l'achèvement"
+
+#. module: employee_orientation
+#: model_terms:ir.ui.view,arch_db:employee_orientation.view_employee_training_search
+msgid "Group By"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_orientation__has_message
@@ -799,9 +822,25 @@ msgid "Training"
 msgstr "Formation"
 
 #. module: employee_orientation
+#: model:ir.model.fields,field_description:employee_orientation.field_hr_employee__training_ids
+msgid "Training Details"
+msgstr ""
+
+#. module: employee_orientation
+#: model:ir.model.fields,field_description:employee_orientation.field_hr_employee__training_ids_count
+msgid "Training Ids Count"
+msgstr ""
+
+#. module: employee_orientation
 #: model:ir.model.fields,field_description:employee_orientation.field_employee_training__program_name
 msgid "Training Program"
 msgstr "Programme de formation"
+
+#. module: employee_orientation
+#: code:addons/employee_orientation/models/employee_training.py:0
+#, python-format
+msgid "Training planning"
+msgstr ""
 
 #. module: employee_orientation
 #: model:ir.ui.menu,name:employee_orientation.menu_employee_training_child
