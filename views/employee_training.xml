@@ -6,7 +6,7 @@
             <field name="model">employee.training</field>
             <field name="arch" type="xml">
                 <tree string="Employee Training Program">
-                    <field name="program_name"/>
+                    <field name="name"/>
                     <field name="program_department_ids" widget="many2many_tags" optional="hide"/>
                     <field name="program_convener_id" domain="[('department_id.name', '=', 'program_department.name')]"/>
                     <field name="date_from"/>
@@ -36,7 +36,7 @@
                     <sheet>
                         <group name="main">
                             <group>
-                                <field name="program_name" />
+                                <field name="name" />
                                 <label for="date_from" string="Time Period"/>
                                 <div><field name="date_from" class="oe_inline"/> to <field name="date_to" class="oe_inline"/></div>
                                 <field name="duration" widget="float_time"/>
@@ -77,12 +77,24 @@
                 </form>
             </field>
         </record>
+
+        <record id="view_employee_training_calendar" model="ir.ui.view">
+            <field name="name">view.employee.training.calendar</field>
+            <field name="model">employee.training</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date_from" date_stop="date_to" string="Training planning" color="name" event_limit="5" mode="month">
+                    <field name="name"/>
+                    <field name="state"/>
+                </calendar>
+            </field>
+        </record>
+
         <record id="view_employee_training_search" model="ir.ui.view">
             <field name="name">employee.training.search</field>
             <field name="model">employee.training</field>
             <field name="arch" type="xml">
                 <search string="Employee Training Program">
-                    <field name="program_name"/>
+                    <field name="name"/>
                     <field name="training_ids" string="Employee"/>
                     <separator/>
                     <group expand="0" string="Group By">
@@ -100,7 +112,7 @@
             <field name="name">Employee Training Program</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">employee.training</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="search_view_id" ref="view_employee_training_search" />
             <field name="domain">[]</field>
             <field name="context">{}</field>

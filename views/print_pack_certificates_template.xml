@@ -47,7 +47,7 @@
                                         </span>
                                         for certifying his/her participation in the training program "
                                         <strong>
-                                            <t t-esc="o['program_name']"/>
+                                            <t t-esc="o['name']"/>
                                         </strong>
                                         " conducted by
                                         <strong>

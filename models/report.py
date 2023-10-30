@@ -38,7 +38,7 @@ class PackingReportValues(models.AbstractModel):
                 'doc_model': 'hr.employee',
                 'name': line.name,
                 'department_id': line.department_id.name,
-                'program_name': data['program_name'],
+                'name': data['name'],
                 'company_name': data['company_name'],
                 'date_to': data['date_to'],
                 'program_convener': data['program_convener'],

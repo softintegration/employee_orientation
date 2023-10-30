@@ -103,7 +103,7 @@ msgid ""
 "                    </p>\n"
 "                    <p>\n"
 "                        You are requested to conduct\n"
-"                        <t t-out=\"object.program_name\"/>\n"
+"                        <t t-out=\"object.name\"/>\n"
 "                        Training program for\n"
 "                        <t t-out=\"object.program_department_ids[0].name\"/>\n"
 "                        department\n"
@@ -835,7 +835,7 @@ msgid "Training Ids Count"
 msgstr ""
 
 #. module: employee_orientation
-#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__program_name
+#: model:ir.model.fields,field_description:employee_orientation.field_employee_training__name
 msgid "Training Program"
 msgstr "Programme de formation"
 

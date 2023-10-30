@@ -57,14 +57,20 @@ class HrEmployee(models.Model):
     def show_training_ids(self):
         self.ensure_one()
         domain = [('id', 'in', self.training_ids.ids)]
+        ctx = dict(self.env.context or {})
+        ctx.update({
+            'default_training_ids': [(6, 0, self.ids)]
+        })
         return {
             'name': _('Training planning'),
             'view_mode': 'tree,form',
-            'views': [(self.env.ref('employee_orientation.view_employee_training_tree').id, 'tree'),
+            'views': [(self.env.ref('employee_orientation.view_employee_training_calendar').id, 'calendar'),
+                      (self.env.ref('employee_orientation.view_employee_training_tree').id, 'tree'),
                       (self.env.ref('employee_orientation.view_employee_training_form').id, 'form')],
             'res_model': 'employee.training',
             'type': 'ir.actions.act_window',
             'target': 'current',
+            'context':ctx,
             'domain': domain,
         }
 
@@ -74,11 +80,10 @@ class HrEmployee(models.Model):
 
 class EmployeeTraining(models.Model):
     _name = 'employee.training'
-    _rec_name = 'program_name'
     _description = "Employee Training"
     _inherit = 'mail.thread'
 
-    program_name = fields.Char(string='Training Program', required=True)
+    name = fields.Char(string='Training Program', required=True)
     program_department_ids = fields.Many2many('hr.department', string='Departments', required=False)
     program_convener_id = fields.Many2one('res.users', string='Responsible User', size=32, required=True)
     training_ids = fields.Many2many('hr.employee','employee_training_employee','training_id','employee_id',string='Employee Details',
@@ -130,8 +135,9 @@ class EmployeeTraining(models.Model):
 
     @api.onchange('program_department_ids')
     def onchange_department_ids(self):
-        datas = self.env['hr.employee'].search([('department_id', 'in', self.program_department_ids.ids)])
-        self.training_ids = datas
+        if self.program_department_ids:
+            datas = self.env['hr.employee'].search([('department_id', 'in', self.program_department_ids.ids)])
+            self.training_ids = datas
 
     @api.onchange('external')
     def onchange_external(self):
@@ -147,7 +153,7 @@ class EmployeeTraining(models.Model):
         minutes = difference.minutes
         data = {
             'dept_id': self.program_department_ids[0].id,
-            'program_name': self.program_name,
+            'name': self.name,
             'company_name': self.company_id.name,
             'date_to': started_date,
             'duration': duration,
